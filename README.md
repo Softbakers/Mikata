@@ -62,7 +62,7 @@ Mikata mikataJP = new Mikata(Locale.JAPANESE, "yyyy年MM月dd日 HH時mm分");
 
 **Getting Current Date/Time**
 
-java
+```java
 
 *// Get current date/time in various formats*
 
@@ -87,10 +87,11 @@ String customFormat = mikata.date.string("yyyy-MM-dd HH:mm:ss");
 String frenchDate = mikata.date.stringLocalDate(Locale.FRENCH);
 
 String germanDateTime = mikata.date.stringLocalDateTime(Locale.GERMAN, "dd.MM.yyyy HH:mm");
+```
 
 **Date Comparison**
 
-java
+```java
 
 *// Compare various date types*
 
@@ -111,10 +112,11 @@ int result3 = mikata.date.compareTo(localDateTime1, date2);
 *// - Timestamp vs Date, LocalDate, LocalDateTime, Timestamp, long*
 
 *// - long vs Date, LocalDate, LocalDateTime, Timestamp, long*
+```
 
 **Date Differences**
 
-java
+```java
 
 *// Complete breakdown by time units*
 
@@ -147,12 +149,13 @@ long totalYears = mikata.date.totalDurationInYears(startDate, endDate);
 long nanos = mikata.date.durationInNanos(timestamp, localDateTime);
 
 long micros = mikata.date.durationInMicros(localDate, date);
+```
 
 **2. Date Conversion (mikata.converter)**
 
 **String Conversion**
 
-java
+```java
 
 *// Date to String*
 
@@ -183,10 +186,10 @@ String timestampStr = mikata.converter.toString(timestamp, "yyyy-MM-dd'T'HH:mm:s
 *// long timestamp to String*
 
 String longTimestampStr = mikata.converter.toString(System.currentTimeMillis(), Locale.UK);
-
+```
 **Type Conversion**
 
-java
+```java
 
 *// To java.util.Date*
 
@@ -253,12 +256,13 @@ long unix1 = mikata.converter.toUnixTimestamp(new Date());
 long unix2 = mikata.converter.toUnixTimestamp(LocalDateTime.now());
 
 long unix3 = mikata.converter.toUnixTimestamp("2024-01-01T00:00:00");
+```
 
 **🎯 Advanced Usage**
 
 **Configuration**
 
-java
+```java
 
 *// Get current configuration*
 
@@ -279,20 +283,22 @@ mikata.date.setDefaultPattern("dd.MM.yyyy HH:mm:ss");
 mikata.converter.setDefaultLocale(Locale.FRENCH);
 
 mikata.converter.setDefaultPattern("dd/MM/yyyy");
+```
 
 **Validation**
 
-java
+```java
 
 *// Check if a timestamp is a valid Unix timestamp*
 
 boolean isValid = mikata.date.isUnixTimestamp(1704067200L); *// true for seconds*
 
 boolean isInvalid = mikata.date.isUnixTimestamp(1704067200000L); *// false for milliseconds*
+```
 
 **DateType Enum Usage**
 
-java
+```java
 
 *// Get current date/time in specific type*
 
@@ -303,6 +309,7 @@ Object nowAsLocalDate = mikata.date.now(DateType.LocalDate); *// Returns LocalDa
 Object nowAsTimestamp = mikata.date.now(DateType.Timestamp); *// Returns Timestamp*
 
 Object nowAsString = mikata.date.now(DateType.StringLocalDateTime); *// Returns String*
+```
 
 **📋 API Reference**
 
@@ -360,7 +367,7 @@ The mikata.converter object implements DateConverterUtilAPI with methods organiz
 
 **Example 1: Date Difference Calculation**
 
-java
+```java
 
 Mikata mikata = new Mikata(Locale.US, "MM/dd/yyyy");
 
@@ -383,10 +390,11 @@ long totalDays = mikata.date.totalDurationInDays(startDate, endDate);
 long months = mikata.date.durationInMonths(startDate, endDate);
 
 long weeks = mikata.date.durationInWeeks(startDate, endDate);
+```
 
 **Example 2: Localized Date Formatting**
 
-java
+```java
 
 Mikata mikataFR = new Mikata(Locale.FRENCH, "dd/MM/yyyy");
 
@@ -401,10 +409,11 @@ System.out.println("French: " + mikataFR.converter.toString(now));
 System.out.println("Japanese: " + mikataJP.converter.toString(now));
 
 System.out.println("German: " + mikataDE.converter.toString(now));
+```
 
 **Example 3: Database Integration**
 
-java
+```java
 
 Mikata mikata = new Mikata();
 
@@ -427,10 +436,11 @@ Date legacyDate = mikata.converter.toDate(dbTimestamp);
 *// Calculate time since creation*
 
 long hoursSinceCreation = mikata.date.durationInHours(created, LocalDateTime.now());
+```
 
 **Example 4: REST API Date Handling**
 
-java
+```java
 
 @RestController
 
@@ -481,6 +491,7 @@ return ResponseEntity.ok(new User(formattedDate, ageInYears));
 }
 
 }
+```
 
 **🛠️ Best Practices**
 
@@ -488,7 +499,7 @@ return ResponseEntity.ok(new User(formattedDate, ageInYears));
 
 Consider creating a single instance of Mikata with your application's default locale:
 
-java
+```java
 
 public class DateUtils {
 
@@ -501,7 +512,7 @@ return INSTANCE;
 }
 
 }
-
+```
 **2. Thread Safety**
 
 Mikata instances are thread-safe for read operations. For configuration changes, synchronize access or use separate instances.
@@ -514,7 +525,7 @@ Mikata instances are thread-safe for read operations. For configuration changes,
 
 **4. Error Handling**
 
-java
+```java
 
 try {
 
@@ -527,7 +538,7 @@ Date date = mikata.converter.toDate(invalidDateString);
 logger.error("Failed to parse date: " + invalidDateString, e);
 
 }
-
+```
 **📊 Supported Date Patterns**
 
 Mikata uses Java's DateTimeFormatter patterns. Common patterns include:
@@ -573,7 +584,7 @@ Mikata supports all Java locales. Common ones include:
 
 **Debug Tips**
 
-java
+```java
 
 *// Enable debug logging for date operations*
 
@@ -582,6 +593,7 @@ Mikata mikata = new Mikata();
 System.out.println("Default Locale: " + mikata.date.getDefaultLocale());
 
 System.out.println("Default Pattern: " + mikata.date.getDefaultPattern());
+```
 
 **🤝 Contributing**
 
