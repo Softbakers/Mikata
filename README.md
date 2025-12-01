@@ -28,3 +28,6 @@ The library aims to simplify date/time operations in Java applications by provid
     <artifactId>mikata</artifactId>
     <version>1.0.0</version>
 </dependency>
+
+### Gradle
+implementation 'org.softbakers.utils:mikata:1.0.0'
