@@ -28,40 +28,43 @@ The library aims to simplify date/time operations in Java applications by provid
     <artifactId>mikata</artifactId>
     <version>1.0.0</version>
 </dependency>
-.```
+```
+
 **Gradle**
 
-gradle
+```gradle
 
 implementation 'org.softbakers.utils:mikata:1.0.0'
+```
 
 **🚀 Quick Start**
 
 **Basic Initialization**
 
-java
+```java
 
-_// Default constructor (system locale, "yyyy-MM-dd" pattern)_
+*// Default constructor (system locale, "yyyy-MM-dd" pattern)*
 
 Mikata mikata = new Mikata();
 
-_// Custom locale and pattern_
+*// Custom locale and pattern*
 
 Mikata mikataFR = new Mikata(Locale.FRENCH, "dd/MM/yyyy");
 
 Mikata mikataUS = new Mikata(Locale.US, "MM/dd/yyyy");
 
 Mikata mikataJP = new Mikata(Locale.JAPANESE, "yyyy年MM月dd日 HH時mm分");
+```
 
 **📚 Core Components**
 
-**1\. Date Operations (mikata.date)**
+**1. Date Operations (mikata.date)**
 
 **Getting Current Date/Time**
 
 java
 
-_// Get current date/time in various formats_
+*// Get current date/time in various formats*
 
 LocalDateTime now = mikata.date.now();
 
@@ -73,13 +76,13 @@ long timestamp = mikata.date.timestamp();
 
 Timestamp sqlTimestamp = mikata.date.sqlTimestamp();
 
-_// Formatted strings_
+*// Formatted strings*
 
 String defaultFormat = mikata.date.string();
 
 String customFormat = mikata.date.string("yyyy-MM-dd HH:mm:ss");
 
-_// Localized formatting_
+*// Localized formatting*
 
 String frenchDate = mikata.date.stringLocalDate(Locale.FRENCH);
 
@@ -89,7 +92,7 @@ String germanDateTime = mikata.date.stringLocalDateTime(Locale.GERMAN, "dd.MM.yy
 
 java
 
-_// Compare various date types_
+*// Compare various date types*
 
 int result1 = mikata.date.compareTo(date1, date2);
 
@@ -97,29 +100,29 @@ int result2 = mikata.date.compareTo(localDate1, timestamp2);
 
 int result3 = mikata.date.compareTo(localDateTime1, date2);
 
-_// All combinations are supported:_
+*// All combinations are supported:*
 
-_// - Date vs Date, LocalDate, LocalDateTime, Timestamp, long_
+*// - Date vs Date, LocalDate, LocalDateTime, Timestamp, long*
 
-_// - LocalDate vs Date, LocalDate, LocalDateTime, Timestamp, long_
+*// - LocalDate vs Date, LocalDate, LocalDateTime, Timestamp, long*
 
-_// - LocalDateTime vs Date, LocalDate, LocalDateTime, Timestamp, long_
+*// - LocalDateTime vs Date, LocalDate, LocalDateTime, Timestamp, long*
 
-_// - Timestamp vs Date, LocalDate, LocalDateTime, Timestamp, long_
+*// - Timestamp vs Date, LocalDate, LocalDateTime, Timestamp, long*
 
-_// - long vs Date, LocalDate, LocalDateTime, Timestamp, long_
+*// - long vs Date, LocalDate, LocalDateTime, Timestamp, long*
 
 **Date Differences**
 
 java
 
-_// Complete breakdown by time units_
+*// Complete breakdown by time units*
 
-Map&lt;TimeUnit, Long&gt; diff = mikata.date.diff(startDate, endDate);
+Map\<TimeUnit, Long\> diff = mikata.date.diff(startDate, endDate);
 
-_// Returns map with: DAYS, HOURS, MINUTES, SECONDS, MILLISECONDS, MICROSECONDS, NANOSECONDS_
+*// Returns map with: DAYS, HOURS, MINUTES, SECONDS, MILLISECONDS, MICROSECONDS, NANOSECONDS*
 
-_// Duration calculations_
+*// Duration calculations*
 
 long days = mikata.date.durationInDays(startDate, endDate);
 
@@ -131,7 +134,7 @@ long seconds = mikata.date.durationInSeconds(startTimestamp, endTimestamp);
 
 long milliseconds = mikata.date.durationInMillis(localDateTime1, localDateTime2);
 
-_// Total durations (including fractional parts)_
+*// Total durations (including fractional parts)*
 
 long totalDays = mikata.date.totalDurationInDays(startDate, endDate);
 
@@ -139,19 +142,19 @@ long totalMonths = mikata.date.totalDurationInMonths(startDateTime, endDateTime)
 
 long totalYears = mikata.date.totalDurationInYears(startDate, endDate);
 
-_// Cross-type duration calculations_
+*// Cross-type duration calculations*
 
 long nanos = mikata.date.durationInNanos(timestamp, localDateTime);
 
 long micros = mikata.date.durationInMicros(localDate, date);
 
-**2\. Date Conversion (mikata.converter)**
+**2. Date Conversion (mikata.converter)**
 
 **String Conversion**
 
 java
 
-_// Date to String_
+*// Date to String*
 
 String dateStr1 = mikata.converter.toString(new Date());
 
@@ -161,7 +164,7 @@ String dateStr3 = mikata.converter.toString(new Date(), Locale.FRENCH);
 
 String dateStr4 = mikata.converter.toString(new Date(), Locale.JAPANESE, "yyyy年MM月dd日");
 
-_// LocalDate to String_
+*// LocalDate to String*
 
 String localDateStr1 = mikata.converter.toString(LocalDate.now());
 
@@ -169,15 +172,15 @@ String localDateStr2 = mikata.converter.toString(LocalDate.now(), "dd/MM/yyyy");
 
 String localDateStr3 = mikata.converter.toString(LocalDate.now(), Locale.GERMAN);
 
-_// LocalDateTime to String_
+*// LocalDateTime to String*
 
 String localDateTimeStr = mikata.converter.toString(LocalDateTime.now(), Locale.US, "MM/dd/yyyy hh:mm a");
 
-_// Timestamp to String_
+*// Timestamp to String*
 
 String timestampStr = mikata.converter.toString(timestamp, "yyyy-MM-dd'T'HH:mm:ss.SSS");
 
-_// long timestamp to String_
+*// long timestamp to String*
 
 String longTimestampStr = mikata.converter.toString(System.currentTimeMillis(), Locale.UK);
 
@@ -185,7 +188,7 @@ String longTimestampStr = mikata.converter.toString(System.currentTimeMillis(), 
 
 java
 
-_// To java.util.Date_
+*// To java.util.Date*
 
 Date date1 = mikata.converter.toDate(LocalDate.now());
 
@@ -201,7 +204,7 @@ Date date6 = mikata.converter.toDate("01/01/2024", "dd/MM/yyyy");
 
 Date date7 = mikata.converter.toDate("2024年1月1日", Locale.JAPANESE, "yyyy年M月d日");
 
-_// To LocalDate_
+*// To LocalDate*
 
 LocalDate localDate1 = mikata.converter.toLocalDate(new Date());
 
@@ -213,7 +216,7 @@ LocalDate localDate4 = mikata.converter.toLocalDate("2024-12-25");
 
 LocalDate localDate5 = mikata.converter.toLocalDate("25/12/2024", "dd/MM/yyyy", Locale.FRENCH);
 
-_// To LocalDateTime_
+*// To LocalDateTime*
 
 LocalDateTime localDateTime1 = mikata.converter.toLocalDateTime(new Date());
 
@@ -223,7 +226,7 @@ LocalDateTime localDateTime3 = mikata.converter.toLocalDateTime(timestamp);
 
 LocalDateTime localDateTime4 = mikata.converter.toLocalDateTime("2024-01-01T10:30:00");
 
-_// To Timestamp_
+*// To Timestamp*
 
 Timestamp timestamp1 = mikata.converter.toSqlTimestamp(new Date());
 
@@ -233,7 +236,7 @@ Timestamp timestamp3 = mikata.converter.toSqlTimestamp(LocalDateTime.now());
 
 Timestamp timestamp4 = mikata.converter.toSqlTimestamp("2024-01-01 10:30:45");
 
-_// To long timestamp_
+*// To long timestamp*
 
 long ts1 = mikata.converter.toTimestamp(new Date());
 
@@ -243,7 +246,7 @@ long ts3 = mikata.converter.toTimestamp(LocalDateTime.now());
 
 long ts4 = mikata.converter.toTimestamp("2024-01-01");
 
-_// To Unix timestamp (seconds)_
+*// To Unix timestamp (seconds)*
 
 long unix1 = mikata.converter.toUnixTimestamp(new Date());
 
@@ -257,7 +260,7 @@ long unix3 = mikata.converter.toUnixTimestamp("2024-01-01T00:00:00");
 
 java
 
-_// Get current configuration_
+*// Get current configuration*
 
 Locale currentLocale = mikata.date.getDefaultLocale();
 
@@ -267,7 +270,7 @@ Locale converterLocale = mikata.converter.getDefaultLocale();
 
 String converterPattern = mikata.converter.getDefaultPattern();
 
-_// Update configuration_
+*// Update configuration*
 
 mikata.date.setDefaultLocale(Locale.GERMAN);
 
@@ -281,34 +284,34 @@ mikata.converter.setDefaultPattern("dd/MM/yyyy");
 
 java
 
-_// Check if a timestamp is a valid Unix timestamp_
+*// Check if a timestamp is a valid Unix timestamp*
 
-boolean isValid = mikata.date.isUnixTimestamp(1704067200L); _// true for seconds_
+boolean isValid = mikata.date.isUnixTimestamp(1704067200L); *// true for seconds*
 
-boolean isInvalid = mikata.date.isUnixTimestamp(1704067200000L); _// false for milliseconds_
+boolean isInvalid = mikata.date.isUnixTimestamp(1704067200000L); *// false for milliseconds*
 
 **DateType Enum Usage**
 
 java
 
-_// Get current date/time in specific type_
+*// Get current date/time in specific type*
 
-Object nowAsDate = mikata.date.now(DateType.Date); _// Returns java.util.Date_
+Object nowAsDate = mikata.date.now(DateType.Date); *// Returns java.util.Date*
 
-Object nowAsLocalDate = mikata.date.now(DateType.LocalDate); _// Returns LocalDate_
+Object nowAsLocalDate = mikata.date.now(DateType.LocalDate); *// Returns LocalDate*
 
-Object nowAsTimestamp = mikata.date.now(DateType.Timestamp); _// Returns Timestamp_
+Object nowAsTimestamp = mikata.date.now(DateType.Timestamp); *// Returns Timestamp*
 
-Object nowAsString = mikata.date.now(DateType.StringLocalDateTime); _// Returns String_
+Object nowAsString = mikata.date.now(DateType.StringLocalDateTime); *// Returns String*
 
 **📋 API Reference**
 
 **Mikata Class**
 
-| Constructor | Description |
-| --- | --- |
-| Mikata() | Default constructor with system locale and "yyyy-MM-dd" pattern |
-| Mikata(Locale, String) | Constructor with custom locale and date pattern |
+| Constructor            | Description                                                     |
+|------------------------|-----------------------------------------------------------------|
+| Mikata()               | Default constructor with system locale and "yyyy-MM-dd" pattern |
+| Mikata(Locale, String) | Constructor with custom locale and date pattern                 |
 
 **DateUtilAPI Interface**
 
@@ -316,25 +319,25 @@ The mikata.date object implements DateUtilAPI with methods organized into catego
 
 **Current Date/Time Methods**
 
-- now() - Current LocalDateTime
-- date() - Current java.util.Date
-- localDate() - Current LocalDate
-- timestamp() - Current timestamp in milliseconds
-- unixTimestamp() - Current Unix timestamp in seconds
-- string() - Formatted string with default settings
+-   now() - Current LocalDateTime
+-   date() - Current java.util.Date
+-   localDate() - Current LocalDate
+-   timestamp() - Current timestamp in milliseconds
+-   unixTimestamp() - Current Unix timestamp in seconds
+-   string() - Formatted string with default settings
 
 **Comparison Methods**
 
-- compareTo() - 25 overloaded methods for all type combinations
+-   compareTo() - 25 overloaded methods for all type combinations
 
 **Difference Methods**
 
-- diff() - 35+ methods for calculating differences between all date types
+-   diff() - 35+ methods for calculating differences between all date types
 
 **Duration Methods**
 
-- durationInXxx() - Methods for centuries, years, months, weeks, days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds
-- totalDurationInXxx() - Methods for total durations including fractional parts
+-   durationInXxx() - Methods for centuries, years, months, weeks, days, hours, minutes, seconds, milliseconds, microseconds, nanoseconds
+-   totalDurationInXxx() - Methods for total durations including fractional parts
 
 **DateConverterUtilAPI Interface**
 
@@ -342,16 +345,16 @@ The mikata.converter object implements DateConverterUtilAPI with methods organiz
 
 **String Conversion**
 
-- toString() - Convert any date type to string with various formatting options
+-   toString() - Convert any date type to string with various formatting options
 
 **Type Conversion**
 
-- toDate() - Convert to java.util.Date
-- toLocalDate() - Convert to LocalDate
-- toLocalDateTime() - Convert to LocalDateTime
-- toSqlTimestamp() - Convert to Timestamp
-- toTimestamp() - Convert to milliseconds since epoch
-- toUnixTimestamp() - Convert to seconds since epoch
+-   toDate() - Convert to java.util.Date
+-   toLocalDate() - Convert to LocalDate
+-   toLocalDateTime() - Convert to LocalDateTime
+-   toSqlTimestamp() - Convert to Timestamp
+-   toTimestamp() - Convert to milliseconds since epoch
+-   toUnixTimestamp() - Convert to seconds since epoch
 
 **🔧 Practical Examples**
 
@@ -365,15 +368,15 @@ LocalDate startDate = LocalDate.of(2024, 1, 1);
 
 LocalDate endDate = LocalDate.of(2024, 12, 31);
 
-_// Calculate complete difference_
+*// Calculate complete difference*
 
-Map&lt;TimeUnit, Long&gt; difference = mikata.date.diff(startDate, endDate);
+Map\<TimeUnit, Long\> difference = mikata.date.diff(startDate, endDate);
 
 System.out.println("Days: " + difference.get(TimeUnit.DAYS));
 
 System.out.println("Hours: " + difference.get(TimeUnit.HOURS));
 
-_// Calculate specific durations_
+*// Calculate specific durations*
 
 long totalDays = mikata.date.totalDurationInDays(startDate, endDate);
 
@@ -405,23 +408,23 @@ java
 
 Mikata mikata = new Mikata();
 
-_// Convert database timestamp to various formats_
+*// Convert database timestamp to various formats*
 
 Timestamp dbTimestamp = resultSet.getTimestamp("created_at");
 
-_// To LocalDateTime for business logic_
+*// To LocalDateTime for business logic*
 
 LocalDateTime created = mikata.converter.toLocalDateTime(dbTimestamp);
 
-_// To formatted string for display_
+*// To formatted string for display*
 
 String displayDate = mikata.converter.toString(dbTimestamp, "yyyy-MM-dd HH:mm:ss");
 
-_// To java.util.Date for legacy code_
+*// To java.util.Date for legacy code*
 
 Date legacyDate = mikata.converter.toDate(dbTimestamp);
 
-_// Calculate time since creation_
+*// Calculate time since creation*
 
 long hoursSinceCreation = mikata.date.durationInHours(created, LocalDateTime.now());
 
@@ -437,9 +440,9 @@ private final Mikata mikata = new Mikata();
 
 @PostMapping("/users")
 
-public ResponseEntity&lt;User&gt; createUser(@RequestBody UserRequest request) {
+public ResponseEntity\<User\> createUser(@RequestBody UserRequest request) {
 
-_// Parse string from JSON to LocalDate_
+*// Parse string from JSON to LocalDate*
 
 LocalDate birthDate = mikata.converter.toLocalDate(
 
@@ -449,19 +452,19 @@ request.getBirthDate(),
 
 );
 
-_// Validate age_
+*// Validate age*
 
 LocalDate today = mikata.date.localDate();
 
 long ageInYears = mikata.date.durationInYears(birthDate, today);
 
-if (ageInYears < 18) {
+if (ageInYears \< 18) {
 
 throw new IllegalArgumentException("User must be at least 18 years old");
 
 }
 
-_// Format for response_
+*// Format for response*
 
 String formattedDate = mikata.converter.toString(
 
@@ -505,9 +508,9 @@ Mikata instances are thread-safe for read operations. For configuration changes,
 
 **3. Performance Optimization**
 
-- Reuse Mikata instances instead of creating new ones
-- Cache frequently used date conversions
-- Use appropriate duration methods (e.g., durationInDays vs totalDurationInDays)
+-   Reuse Mikata instances instead of creating new ones
+-   Cache frequently used date conversions
+-   Use appropriate duration methods (e.g., durationInDays vs totalDurationInDays)
 
 **4. Error Handling**
 
@@ -519,7 +522,7 @@ Date date = mikata.converter.toDate(invalidDateString);
 
 } catch (DateTimeParseException e) {
 
-_// Handle parsing errors_
+*// Handle parsing errors*
 
 logger.error("Failed to parse date: " + invalidDateString, e);
 
@@ -529,50 +532,50 @@ logger.error("Failed to parse date: " + invalidDateString, e);
 
 Mikata uses Java's DateTimeFormatter patterns. Common patterns include:
 
-| Pattern | Example | Description |
-| --- | --- | --- |
-| yyyy-MM-dd | 2024-01-01 | ISO date format |
-| dd/MM/yyyy | 01/01/2024 | European date format |
-| MM/dd/yyyy | 01/01/2024 | US date format |
-| yyyy-MM-dd HH:mm:ss | 2024-01-01 10:30:45 | Date with time |
+| Pattern                   | Example                 | Description                |
+|---------------------------|-------------------------|----------------------------|
+| yyyy-MM-dd                | 2024-01-01              | ISO date format            |
+| dd/MM/yyyy                | 01/01/2024              | European date format       |
+| MM/dd/yyyy                | 01/01/2024              | US date format             |
+| yyyy-MM-dd HH:mm:ss       | 2024-01-01 10:30:45     | Date with time             |
 | yyyy-MM-dd'T'HH:mm:ss.SSS | 2024-01-01T10:30:45.123 | ISO 8601 with milliseconds |
-| EEE, MMM d, yyyy | Mon, Jan 1, 2024 | Textual date |
-| h:mm a | 10:30 AM | 12-hour time with AM/PM |
+| EEE, MMM d, yyyy          | Mon, Jan 1, 2024        | Textual date               |
+| h:mm a                    | 10:30 AM                | 12-hour time with AM/PM    |
 
 **🌐 Locale Support**
 
 Mikata supports all Java locales. Common ones include:
 
-- Locale.US - United States
-- Locale.UK - United Kingdom
-- Locale.FRENCH - French
-- Locale.GERMAN - German
-- Locale.JAPANESE - Japanese
-- Locale.CHINESE - Chinese
-- Locale.KOREAN - Korean
-- Locale.ITALIAN - Italian
-- Locale.SPANISH - Spanish
+-   Locale.US - United States
+-   Locale.UK - United Kingdom
+-   Locale.FRENCH - French
+-   Locale.GERMAN - German
+-   Locale.JAPANESE - Japanese
+-   Locale.CHINESE - Chinese
+-   Locale.KOREAN - Korean
+-   Locale.ITALIAN - Italian
+-   Locale.SPANISH - Spanish
 
 **🔍 Troubleshooting**
 
 **Common Issues**
 
-- **Parsing Failures**
-  - Ensure pattern matches the date string format
-  - Check locale compatibility
-  - Validate input string is not null or empty
-- **Time Zone Issues**
-  - Mikata uses system default time zone
-  - For specific time zones, convert dates before passing to Mikata
-- **Performance Issues**
-  - Avoid creating new Mikata instances in loops
-  - Cache frequently used conversions
+1.  **Parsing Failures**
+    -   Ensure pattern matches the date string format
+    -   Check locale compatibility
+    -   Validate input string is not null or empty
+2.  **Time Zone Issues**
+    -   Mikata uses system default time zone
+    -   For specific time zones, convert dates before passing to Mikata
+3.  **Performance Issues**
+    -   Avoid creating new Mikata instances in loops
+    -   Cache frequently used conversions
 
 **Debug Tips**
 
 java
 
-_// Enable debug logging for date operations_
+*// Enable debug logging for date operations*
 
 Mikata mikata = new Mikata();
 
@@ -584,11 +587,11 @@ System.out.println("Default Pattern: " + mikata.date.getDefaultPattern());
 
 We welcome contributions! Please see our [Contributing Guidelines](https://contributing.md/) for details.
 
-- Fork the repository
-- Create a feature branch
-- Commit your changes
-- Push to the branch
-- Create a Pull Request
+1.  Fork the repository
+2.  Create a feature branch
+3.  Commit your changes
+4.  Push to the branch
+5.  Create a Pull Request
 
 **📄 License**
 
@@ -596,28 +599,28 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](https:
 
 **👥 Authors**
 
-- **Mohamed Lamine JELLAD** - _Initial work_ - [Softbakers](https://softbakers.com/)
+-   **Mohamed Lamine JELLAD** - *Initial work* - [Softbakers](https://softbakers.com/)
 
 **🙏 Acknowledgments**
 
-- Thanks to all contributors who have helped shape Mikata
-- Inspired by the need for a comprehensive date/time utility in Java projects
-- Built with ❤️ by the Softbakers team
+-   Thanks to all contributors who have helped shape Mikata
+-   Inspired by the need for a comprehensive date/time utility in Java projects
+-   Built with ❤️ by the Softbakers team
 
 **📞 Support**
 
 For support, please:
 
-- Check the [documentation](https://github.com/softbakers/mikata/docs)
-- Search existing [issues](https://github.com/softbakers/mikata/issues)
-- Create a new issue with detailed description
+1.  Check the [documentation](https://github.com/softbakers/mikata/docs)
+2.  Search existing [issues](https://github.com/softbakers/mikata/issues)
+3.  Create a new issue with detailed description
 
 **🔗 Links**
 
-- [GitHub Repository](https://github.com/softbakers/mikata)
-- [Issue Tracker](https://github.com/softbakers/mikata/issues)
-- [Maven Central](https://mvnrepository.com/artifact/org.softbakers.utils/mikata)
-- [API Documentation](https://softbakers.github.io/mikata/)
+-   [GitHub Repository](https://github.com/softbakers/mikata)
+-   [Issue Tracker](https://github.com/softbakers/mikata/issues)
+-   [Maven Central](https://mvnrepository.com/artifact/org.softbakers.utils/mikata)
+-   [API Documentation](https://softbakers.github.io/mikata/)
 
 ⭐ **If you find Mikata useful, please give it a star on GitHub!** ⭐
 
