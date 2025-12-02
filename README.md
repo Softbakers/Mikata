@@ -120,7 +120,7 @@ int result3 = mikata.date.compareTo(localDateTime1, date2);
 
 // Complete breakdown by time units*
 
-Map\<TimeUnit, Long\> diff = mikata.date.diff(startDate, endDate);
+Map<TimeUnit, Long> diff = mikata.date.diff(startDate, endDate);
 
 // Returns map with: DAYS, HOURS, MINUTES, SECONDS, MILLISECONDS, MICROSECONDS, NANOSECONDS*
 
@@ -377,7 +377,7 @@ LocalDate endDate = LocalDate.of(2024, 12, 31);
 
 // Calculate complete difference*
 
-Map\<TimeUnit, Long\> difference = mikata.date.diff(startDate, endDate);
+Map<TimeUnit, Long> difference = mikata.date.diff(startDate, endDate);
 
 System.out.println("Days: " + difference.get(TimeUnit.DAYS));
 
@@ -450,7 +450,7 @@ private final Mikata mikata = new Mikata();
 
 @PostMapping("/users")
 
-public ResponseEntity\<User\> createUser(@RequestBody UserRequest request) {
+public ResponseEntity<User> createUser(@RequestBody UserRequest request) {
 
 // Parse string from JSON to LocalDate*
 
@@ -468,7 +468,7 @@ LocalDate today = mikata.date.localDate();
 
 long ageInYears = mikata.date.durationInYears(birthDate, today);
 
-if (ageInYears \< 18) {
+if (ageInYears < 18) {
 
 throw new IllegalArgumentException("User must be at least 18 years old");
 
