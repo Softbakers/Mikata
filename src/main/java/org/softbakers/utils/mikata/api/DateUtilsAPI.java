@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0
  * @see DateType
  */
-public interface DateUtilAPI {
+public interface DateUtilsAPI {
 
     // =========================================================================
     // Current Date/Time Methods

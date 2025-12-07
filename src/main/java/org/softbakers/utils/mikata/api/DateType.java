@@ -7,7 +7,7 @@ package org.softbakers.utils.mikata.api;
  *
  * @author Mohamed Lamine JELLAD from Softbakers
  * @version 1.0.0
- * @see DateConverterUtilAPI
+ * @see DateConverterUtilsAPI
  */
 public enum DateType {
 

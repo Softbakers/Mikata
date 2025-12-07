@@ -1,6 +1,6 @@
 package org.softbakers.utils.mikata.helper;
 
-import org.softbakers.utils.mikata.api.DateUtilAPI;
+import org.softbakers.utils.mikata.api.DateUtilsAPI;
 import org.softbakers.utils.mikata.api.DateType;
 
 import java.sql.Timestamp;
@@ -22,16 +22,16 @@ import java.util.concurrent.TimeUnit;
  * @author Mohamed Lamine JELLAD
  * @version 1.0.0
  */
-public class DateUtil implements DateUtilAPI {
+public class DateUtils implements DateUtilsAPI {
 
     private Locale defaultLocale = Locale.getDefault();
     private String defaultPattern = "yyyy-MM-dd";
-    private final DateConverterUtil converter = new DateConverterUtil();
+    private final DateConverterUtils converter = new DateConverterUtils();
 
     /**
      * Default constructor
      */
-    public DateUtil() {
+    public DateUtils() {
         converter.setDefaultLocale(this.defaultLocale);
         converter.setDefaultPattern(this.defaultPattern);
     }
@@ -41,7 +41,7 @@ public class DateUtil implements DateUtilAPI {
      * @param defaultLocale the default locale to use in conversion
      * @param defaultPattern the default pattern to use in conversion
      */
-    public DateUtil(Locale defaultLocale, String defaultPattern) {
+    public DateUtils(Locale defaultLocale, String defaultPattern) {
         this.defaultLocale = defaultLocale;
         this.defaultPattern = defaultPattern;
         converter.setDefaultLocale(this.defaultLocale);

@@ -1,7 +1,7 @@
  package org.softbakers.utils.mikata;
 
-import org.softbakers.utils.mikata.helper.DateConverterUtil;
-import org.softbakers.utils.mikata.helper.DateUtil;
+import org.softbakers.utils.mikata.helper.DateConverterUtils;
+import org.softbakers.utils.mikata.helper.DateUtils;
 
 import java.util.Locale;
 
@@ -90,8 +90,8 @@ import java.util.Locale;
  *
  * @author Mohamed Lamine JELLAD from Softbakers
  * @version 1.0.0
- * @see DateUtil
- * @see DateConverterUtil
+ * @see DateUtils
+ * @see DateConverterUtils
  * @see java.time.LocalDate
  * @see java.time.LocalDateTime
  * @see java.util.Date
@@ -127,7 +127,7 @@ public class Mikata {
      * }
      * </pre>
      */
-    public DateUtil date;
+    public DateUtils date;
 
     /**
      * Date converter utility for converting between different date types and formats
@@ -155,7 +155,7 @@ public class Mikata {
      * }
      * </pre>
      */
-    public DateConverterUtil converter;
+    public DateConverterUtils converter;
 
     /**
      * Default constructor initializes with system default locale and "yyyy-MM-dd" pattern
@@ -169,8 +169,8 @@ public class Mikata {
      * </pre>
      */
     public Mikata() {
-        this.date = new DateUtil(Locale.getDefault(), "yyyy-MM-dd");
-        this.converter = new DateConverterUtil(Locale.getDefault(), "yyyy-MM-dd");
+        this.date = new DateUtils(Locale.getDefault(), "yyyy-MM-dd");
+        this.converter = new DateConverterUtils(Locale.getDefault(), "yyyy-MM-dd");
     }
 
     /**
@@ -194,7 +194,7 @@ public class Mikata {
      * </pre>
      */
     public Mikata(Locale defaultLocale, String defaultPattern) {
-        this.date = new DateUtil(defaultLocale, defaultPattern);
-        this.converter = new DateConverterUtil(defaultLocale, defaultPattern);
+        this.date = new DateUtils(defaultLocale, defaultPattern);
+        this.converter = new DateConverterUtils(defaultLocale, defaultPattern);
     }
 }

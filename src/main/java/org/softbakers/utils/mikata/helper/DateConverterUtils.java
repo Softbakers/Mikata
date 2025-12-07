@@ -1,6 +1,6 @@
 package org.softbakers.utils.mikata.helper;
 
-import org.softbakers.utils.mikata.api.DateConverterUtilAPI;
+import org.softbakers.utils.mikata.api.DateConverterUtilsAPI;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -23,7 +23,7 @@ import java.util.Locale;
  * @author Mohamed Lamine JELLAD from Softbakers
  * @version 1.0.0
  */
-public class DateConverterUtil implements DateConverterUtilAPI {
+public class DateConverterUtils implements DateConverterUtilsAPI {
 
     private Locale defaultLocale = Locale.getDefault();
     private String defaultPattern = "yyyy-MM-dd";
@@ -31,7 +31,7 @@ public class DateConverterUtil implements DateConverterUtilAPI {
     /**
      * Default constructor initializes with system default locale and default pattern.
      */
-    public DateConverterUtil() {
+    public DateConverterUtils() {
     }
 
     /**
@@ -40,7 +40,7 @@ public class DateConverterUtil implements DateConverterUtilAPI {
      * @param defaultLocale the locale to use for formatting and parsing
      * @param defaultPattern the default date pattern to use
      */
-    public DateConverterUtil(Locale defaultLocale, String defaultPattern) {
+    public DateConverterUtils(Locale defaultLocale, String defaultPattern) {
         this.defaultLocale = defaultLocale;
         this.defaultPattern = defaultPattern;
     }

@@ -14,7 +14,7 @@ import java.util.Locale;
  * @author Mohamed Lamine JELLAD from Softbakers
  * @version 1.0.0
  */
-public interface DateConverterUtilAPI {
+public interface DateConverterUtilsAPI {
 
         // =========================================================================
         // toString conversion methods
