@@ -28,7 +28,7 @@ The library aims to simplify date/time operations in Java applications by provid
 <dependency>
     <groupId>org.softbakers.utils</groupId>
     <artifactId>mikata</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -36,7 +36,7 @@ The library aims to simplify date/time operations in Java applications by provid
 
 ```gradle
 
-implementation 'org.softbakers.utils:mikata:1.0.0'
+implementation 'org.softbakers.utils:mikata:1.0.1'
 ```
 
 **🚀 Quick Start**
